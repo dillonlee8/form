@@ -1,0 +1,27 @@
+.container {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.label {
+  margin-right: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.input {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.showPassword {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  font-weight: bold
+}

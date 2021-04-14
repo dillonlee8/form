@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  width: 500px;
+  padding: 20px 0;
+}
+
+.formBody {
+  padding: 20px 0;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,14 @@
+.container {
+   display: flex;
+}
+
+.container > div {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+}
+
+.activeStep {
+  background-color: aqua;
+}
+

@@ -1,0 +1,16 @@
+.container {
+  text-align: center;
+}
+
+.tick {
+  height: 25px;
+  width: 50px;
+  margin: 0 auto;
+  border-left: 5px solid green;
+  border-bottom: 5px solid green;
+  transform: rotate(-45deg);
+}
+
+.text{
+  margin-top: 50px;
+}
