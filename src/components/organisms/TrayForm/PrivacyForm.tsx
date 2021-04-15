@@ -33,7 +33,7 @@ function PrivacyForm({submitStep}: Props) {
       />
 
 
-      <Button onClick={submit} type="button">Submit</Button>
+      <Button data-testid="submit-privacyForm" onClick={submit} type="button">Submit</Button>
     </>
   )
 }

@@ -11,7 +11,7 @@ function FormHeader({stepIndex, headers}: Props) {
   return (
     <div className={styles.container}>
       {headers.map((header, i) => (
-        <div key={header} className={classnames({[styles.activeStep]: stepIndex === i})}>{header}</div>
+        <div key={header} data-testid={`${header}-header`} className={classnames({[styles.activeStep]: stepIndex === i})}>{header}</div>
       ))}
     </div>
   )

@@ -67,6 +67,7 @@ function UserForm({
       
 
       <Button
+        data-testid="submit-userForm"
         onClick={nextStep}
         type="button"
         >Submit</Button>

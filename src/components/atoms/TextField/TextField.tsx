@@ -20,12 +20,12 @@ function TextField({id, name, label, type}: Props) {
 
   return (
     <div className={styles.container} >
-      <label className={styles.label} htmlFor="role">{label}</label> 
+      <label className={styles.label} htmlFor={id}>{label}</label> 
       {type === 'password' && (
         <small 
         className={styles.showPassword}
         onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-        >show password</small>
+        >{isPasswordVisible ? 'hide password' : 'show password'}</small>
       )}
       <div>
         <Field className={styles.input} id={id} name={name} type={setType()} />

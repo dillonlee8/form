@@ -2,38 +2,27 @@ import React, { useState } from 'react'
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import classnames from 'classnames'
+import { useDispatch } from 'react-redux'
 import styles from './TrayForm.module.css'
 import UserForm from './UserForm'
 
 import PrivacyForm from './PrivacyForm';
 import Complete from './Complete';
 import FormHeader from '../../molecules/FormHeader';
-// do a toggle to show the password
-// show error messages
-// disable next when invalid
-// console log submitted values
-
-// write tests for all requirements
-// style components
-// use redux to dispatch action for step index and form values
-
+import { setTrayFormValues } from '../../../redux/trayForm/actions';
 
 function TrayForm () {
   const [stepIndex, setStepIndex] = useState(0)
 
-  function submitStepOne(): void {
-    setStepIndex(1)
-  }
+  const dispatch = useDispatch()
 
-  function submitStepTwo(): void {
-    setStepIndex(2)
+  function goToNextStep(): void {
+    setStepIndex(stepIndex + 1)
   }
-
-  console.log('step index', stepIndex)
 
   return (
     <>
-    <h1>Tray.io Form</h1>
+    <h1>Form</h1>
     <div className={styles.container}>
       <div className={styles.form}>
         <Formik
@@ -56,10 +45,8 @@ function TrayForm () {
             .required('Required'),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            console.log('VALUES:', JSON.stringify(values, null, 2))
-            setSubmitting(false);
-          }, 400);
+          dispatch(setTrayFormValues(values))
+          setSubmitting(false);
         }}
       >
         <Form>
@@ -68,21 +55,27 @@ function TrayForm () {
               headers={['User', 'Privacy', 'Done']}
             />
             <div className={styles.formBody}>
-              <div className={classnames({
+              <div
+              data-testid="step1-container"
+              className={classnames({
                 [styles.hidden]: stepIndex !== 0
               })}>
                 <UserForm
-                  submitStep={submitStepOne}
+                  submitStep={goToNextStep}
                 />
               </div>
 
-              <div className={classnames({
+              <div 
+              data-testid="step2-container"
+              className={classnames({
                 [styles.hidden]: stepIndex !== 1
               })}>
-                <PrivacyForm submitStep={submitStepTwo} />
+                <PrivacyForm submitStep={goToNextStep} />
               </div>
 
-              <div className={classnames({
+              <div 
+              data-testid="step3-container"
+              className={classnames({
                 [styles.hidden]: stepIndex !== 2
               })}>
                 <Complete />
